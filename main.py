@@ -2,6 +2,7 @@ import falcon
 import json
 import numpy as np
 import random
+import string
 import os
 
 from urllib import request
@@ -18,7 +19,8 @@ class TestResource(object):
     def on_get(self, req, res):
         """Handles all GET requests."""
         res.status = falcon.HTTP_200
-        res.body = ('something else')
+        sauce = [random.choice(string.ascii_letters) for i in range(3)]
+        res.body = ("".join(sauce))
 
 class KittyResource(object):
     def load_model(self):
